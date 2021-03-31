@@ -50,7 +50,7 @@ class WirelessMic(ChannelDevice):
 
     def set_audio_level(self, audio_level):
         audio_level = int(audio_level)
-        if self.rx.type in ['qlxd', 'ulxd']:
+        if self.rx.type in ['qlxd', 'ulxd', 'slxd']:
             audio_level = 2 * audio_level
 
         if self.rx.type == 'axtd':
@@ -72,7 +72,7 @@ class WirelessMic(ChannelDevice):
 
     def set_rf_level(self, rf_level):
         rf_level = float(rf_level)
-        if self.rx.type in ['qlxd', 'ulxd']:
+        if self.rx.type in ['qlxd', 'ulxd', 'slxd']:
             rf_level = 100 * (rf_level / 115)
 
         if self.rx.type == 'axtd':
