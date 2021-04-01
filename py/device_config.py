@@ -32,6 +32,36 @@ BASE_CONST['uhfr'] = {
     }
 }
 
+BASE_CONST['slxd'] = {
+    'DEVICE_CLASS' : 'WirelessMic',
+    'PROTOCOL' : 'TCP',
+    'ch_const' : {
+        'battery': 'TX_BATT_BARS',
+        'quality': 'NOTSUPPOTTED',
+        'frequency': 'FREQUENCY',
+        'audio_level': 'AUDIO_LVL_RMS',
+        'rf_level': 'RSSI',
+        'name': 'CHAN_NAME',
+        'antenna': 'NOTSUPPORTED',
+        'tx_offset' : 'AUDIO_GAIN',
+        'power_lock': 'TX_PWR_LOCK',
+        'runtime' : 'TX_BATT_MINS',
+        },
+    'base_const' : {
+        'getAll' : ['< GET {} ALL >'],
+        'query' : [
+            '< GET {} CHAN_NAME >',
+            '< GET {} BATT_BARS >'
+        ],
+        'meter_stop' : '< SET {} METER_RATE 0 >'
+    },
+    'DCID_MODEL' : {
+        'SLXD4' : 1,
+        'SLXD4D' : 2,
+    }
+
+}
+
 BASE_CONST['qlxd'] = {
     'DEVICE_CLASS' : 'WirelessMic',
     'PROTOCOL' : 'TCP',
