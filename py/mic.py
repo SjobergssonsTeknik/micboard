@@ -54,6 +54,9 @@ class WirelessMic(ChannelDevice):
         if self.rx.type in ['qlxd', 'ulxd']:
             audio_level = 2 * audio_level
 
+        if self.rx.type == 'slxd':
+            audio_level = audio_level - 120
+
         if self.rx.type == 'axtd':
             audio_level = audio_level - 20
 
@@ -73,7 +76,7 @@ class WirelessMic(ChannelDevice):
 
     def set_rf_level(self, rf_level):
         rf_level = float(rf_level)
-        if self.rx.type in ['qlxd', 'ulxd']:
+        if self.rx.type in ['qlxd', 'ulxd', 'slxd']:
             rf_level = 100 * (rf_level / 115)
 
         if self.rx.type == 'axtd':
@@ -104,7 +107,7 @@ class WirelessMic(ChannelDevice):
 
     def set_tx_offset(self, tx_offset):
         if tx_offset != '255':
-            if self.rx.type in ['qlxd', 'ulxd']:
+            if self.rx.type in ['qlxd', 'ulxd', 'slxd']:
                 self.tx_offset = int(tx_offset)
 
             if self.rx.type == 'axtd':
@@ -175,7 +178,7 @@ class WirelessMic(ChannelDevice):
         }
 
     def parse_sample(self, split):
-        if self.rx.type in ['qlxd', 'ulxd']:
+        if self.rx.type in ['qlxd', 'ulxd', 'slxd']:
             self.set_antenna(split[3])
             self.set_rf_level(split[4])
             self.set_audio_level(split[5])
